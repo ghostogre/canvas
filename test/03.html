@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>03</title>
+  </head>
+  <body>
+    <canvas id="canvas"  style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;">
+      看到这段文字说明你的浏览器不支持canvas
+    </canvas>
+    <script>
+      window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+
+        // 实例1: 圆形端点,斜角连接,在画布左上角
+        context.beginPath();
+        context.moveTo(0,0);
+        context.lineTo(180,0);
+        context.lineTo(180,180);
+        context.lineJoin = 'bevel';
+        context.lineCap = 'round';
+        context.lineWidth = 10;
+        context.strokeStyle = "red";
+        context.stroke();
+
+        // 实例2: 圆形端点,斜角连接,不在画布左上角
+        context.beginPath();
+        context.moveTo(300,200);
+        context.lineTo(480,200);
+        context.lineTo(480,380);
+        context.lineJoin = 'bevel';
+        context.lineCap = 'round';
+        context.lineWidth = 10;
+        context.strokeStyle = "blue";
+        context.stroke();
+
+        // 实例3: 平直端点,圆形连接,不在画布左上角
+        context.beginPath();
+        context.moveTo(600,400);
+        context.lineTo(780,400);
+        context.lineTo(780,580);
+        context.lineJoin = 'round';
+        context.lineCap = 'butt';
+        context.lineWidth = 10;
+        context.strokeStyle = "black";
+        context.stroke();
+      }
+    </script>
+  </body>
+</html>
