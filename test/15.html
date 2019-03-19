@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>矩阵变换</title>
+    <style>
+        body { background: url("./images/bg3.jpg") repeat; }
+        #canvas { border: 1px solid #aaaaaa; display: block; margin: 50px auto; }
+    </style>
+</head>
+<body>
+<div id="canvas-warp">
+    <canvas id="canvas">
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+    </canvas>
+</div>
+
+<script>
+    // transform()是基于当前坐标体系的做的形变，也就是说如果坐标体系已经发生了形变，transform()会在这基础上再次形变；
+    // setTransform()是基于初始坐标体系做的形变，不管当前坐标体系发生了什么样的形变，都会被setTransform()根据初始坐标体系形变结果覆盖。
+    window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 600;
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FFF";
+        context.fillRect(0,0,800,600);
+
+        context.fillStyle="yellow";
+        context.fillRect(200,100,250,100);
+
+        context.setTransform(1,0.5,-0.5,1,30,10);
+        context.fillStyle="red";
+        context.fillRect(200,100,250,100);
+        // 蓝色的会叠在红色的上面
+
+        context.setTransform(1,0.5,-0.5,1,30,10);
+        context.fillStyle="blue";
+        context.fillRect(200,100,250,100);
+    };
+</script>
+</body>
+</html>
